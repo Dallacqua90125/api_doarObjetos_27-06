@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+
 function conectarBanco() {
 
 mongoose.connect(process.env.MONGO_URI)
