@@ -80,7 +80,6 @@ const objetoSchema = new mongoose.Schema({
   timestamps: true
 });
 
-// Índices para melhorar performance das consultas
 objetoSchema.index({ categoria: 1, disponivel: 1 });
 objetoSchema.index({ 'localizacao.cidade': 1 });
 objetoSchema.index({ dataDoacao: -1 });

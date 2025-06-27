@@ -11,7 +11,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 console.error('Erro ao conectar ao MongoDB:', err);
 
-process.exit(1); // Encerra a aplicação em caso de falha
+process.exit(1);
 
 });
 

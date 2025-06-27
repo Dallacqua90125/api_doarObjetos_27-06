@@ -10,7 +10,6 @@ const {
   buscarEstatisticas
 } = require('../controllers/objetoController');
 
-// Rotas para objetos
 router.route('/')
   .get(buscarTodos)    // GET /api/objetos - Buscar todos os objetos
   .post(criar);        // POST /api/objetos - Criar novo objeto

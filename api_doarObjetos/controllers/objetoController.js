@@ -1,6 +1,5 @@
 const Objeto = require('../models/Objeto');
 
-// Buscar todos os objetos disponíveis
 const buscarTodos = async (req, res) => {
   try {
     const { categoria, cidade, estado, disponivel = true } = req.query;
@@ -37,7 +36,6 @@ const buscarTodos = async (req, res) => {
   }
 };
 
-// Buscar objeto por ID
 const buscarPorId = async (req, res) => {
   try {
     const objeto = await Objeto.findById(req.params.id);
@@ -62,7 +60,6 @@ const buscarPorId = async (req, res) => {
   }
 };
 
-// Criar novo objeto
 const criar = async (req, res) => {
   try {
     const objeto = await Objeto.create(req.body);
@@ -90,7 +87,6 @@ const criar = async (req, res) => {
   }
 };
 
-// Atualizar objeto
 const atualizar = async (req, res) => {
   try {
     const objeto = await Objeto.findByIdAndUpdate(
@@ -132,7 +128,6 @@ const atualizar = async (req, res) => {
   }
 };
 
-// Deletar objeto
 const deletar = async (req, res) => {
   try {
     const objeto = await Objeto.findByIdAndDelete(req.params.id);
@@ -157,7 +152,6 @@ const deletar = async (req, res) => {
   }
 };
 
-// Marcar objeto como indisponível
 const marcarIndisponivel = async (req, res) => {
   try {
     const objeto = await Objeto.findByIdAndUpdate(
@@ -187,7 +181,6 @@ const marcarIndisponivel = async (req, res) => {
   }
 };
 
-// Buscar estatísticas
 const buscarEstatisticas = async (req, res) => {
   try {
     const totalObjetos = await Objeto.countDocuments();

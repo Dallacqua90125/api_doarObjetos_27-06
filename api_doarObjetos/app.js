@@ -2,19 +2,15 @@ const express = require('express');
 const dotenv = require('dotenv');
 const conectarBanco = require('./config/db');
 
-// Carregar variáveis de ambiente
 dotenv.config();
 
-// Conectar ao banco de dados
 conectarBanco();
 
 const app = express();
 
-// Middleware para parsing de JSON
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 
-// Middleware para CORS
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH');
@@ -27,7 +23,6 @@ app.use((req, res, next) => {
   }
 });
 
-// Rota de teste
 app.get('/', (req, res) => {
   res.json({
     message: 'API de Doação de Objetos funcionando!',
@@ -39,10 +34,8 @@ app.get('/', (req, res) => {
   });
 });
 
-// Rotas da API
 app.use('/api/objetos', require('./routes/objetos'));
 
-// Middleware de tratamento de erros
 app.use((err, req, res, next) => {
   console.error(err.stack);
   
@@ -53,7 +46,6 @@ app.use((err, req, res, next) => {
   });
 });
 
-// Middleware para rotas não encontradas
 app.use('*', (req, res) => {
   res.status(404).json({
     success: false,
@@ -64,9 +56,9 @@ app.use('*', (req, res) => {
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  console.log(`🚀 Servidor rodando na porta ${PORT}`);
-  console.log(`📱 API disponível em: http://localhost:${PORT}`);
-  console.log(`📊 Estatísticas: http://localhost:${PORT}/api/objetos/estatisticas`);
+  console.log(`Servidor rodando na porta ${PORT}`);
+  console.log(`API disponível em: http://localhost:${PORT}`);
+  console.log(`Estatísticas: http://localhost:${PORT}/api/objetos/estatisticas`);
 });
 
 module.exports = app;
